@@ -1,7 +1,6 @@
 package com.kmm.android.ui.car
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.kmm.android.R
 import com.kmm.android.data.Car
 import com.kmm.android.data.network.KtorApiClient
 import com.kmm.android.data.network.KtorCarRepository
@@ -68,7 +68,10 @@ class AddCarFragment : Fragment() {
             binding.etPrice.setText(it.price.toString())
             binding.etImage.setText(it.image)
             Glide.with(requireContext()).load(it.image)
-                .placeholder(android.R.drawable.ic_menu_gallery)
+                .thumbnail(
+                    Glide.with(requireContext())
+                        .load(R.drawable.loading)
+                )
                 .error(android.R.drawable.ic_dialog_alert)
                 .centerCrop()
                 .into(binding.imageCar)

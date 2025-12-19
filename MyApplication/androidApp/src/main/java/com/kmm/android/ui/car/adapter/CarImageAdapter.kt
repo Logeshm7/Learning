@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.kmm.android.data.Car
+import com.kmm.android.R
 import com.kmm.android.databinding.CarImageRowBinding
 
 class CarImageAdapter(
@@ -24,6 +24,7 @@ class CarImageAdapter(
     }
 
     override fun getItemCount(): Int = carImage.size
+
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(updatedList: List<String>?) {
         if (updatedList != null) {
@@ -36,7 +37,10 @@ class CarImageAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(carImage: String) {
             binding.apply {
-                Glide.with(context).load(carImage).placeholder(android.R.drawable.ic_menu_gallery)
+                Glide.with(context).load(carImage).thumbnail(
+                    Glide.with(context)
+                        .load(R.drawable.loading)
+                )
                     .error(android.R.drawable.ic_dialog_alert)
                     .centerCrop()
                     .into(ivCar)

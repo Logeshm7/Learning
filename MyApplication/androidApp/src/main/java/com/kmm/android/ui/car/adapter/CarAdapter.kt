@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.kmm.android.R
 import com.kmm.android.data.Car
 import com.kmm.android.databinding.CarRowBinding
 
@@ -48,8 +49,9 @@ class CarAdapter(
             binding.apply {
                 tvBrandModel.text = "${car.brand} ${car.model}"
                 tvPrice.text = "$${car.price}"
-                Glide.with(context).load(car.image).placeholder(android.R.drawable.ic_menu_gallery)
-                    .error(android.R.drawable.ic_dialog_alert)
+                Glide.with(context).load(car.image).thumbnail(
+                    Glide.with(context).load(R.drawable.loading)
+                ).error(android.R.drawable.ic_dialog_alert)
                     .centerCrop()
                     .into(ivCar)
             }
