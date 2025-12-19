@@ -1,0 +1,27 @@
+<resources>
+    <style name="Theme.MyNavigationDrawer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary branding color -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <!-- Secondary color -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <!-- Background and surface -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <!-- Toolbar / ActionBar -->
+        <item name="toolbarStyle">@style/Widget.MyNavigationDrawer.Toolbar</item>
+    </style>
+
+    <!-- Toolbar style -->
+    <style name="Widget.MyNavigationDrawer.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/colorOnPrimary</item>
+        <item name="subtitleTextColor">@color/colorOnPrimary</item>
+    </style>
+</resources>
