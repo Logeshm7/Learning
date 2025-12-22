@@ -10,9 +10,9 @@ import com.kmm.android.R
 import com.kmm.android.databinding.CarImageRowBinding
 
 class CarImageAdapter(
-    private var carImage: List<String>,
     private val context: Context,
 ) : RecyclerView.Adapter<CarImageAdapter.CarViewHolder>() {
+    private var carImage: List<String> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val binding = CarImageRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)

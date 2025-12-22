@@ -41,6 +41,13 @@ class NavigationActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener{  _, destination, _ ->
+            when(destination.id){
+                R.id.nav_car -> binding.appBarNavigation.fab.show()
+                else -> binding.appBarNavigation.fab.hide()
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

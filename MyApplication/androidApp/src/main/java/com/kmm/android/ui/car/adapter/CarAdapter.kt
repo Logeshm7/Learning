@@ -2,8 +2,7 @@ package com.kmm.android.ui.car.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
-import android.view.LayoutInflater
+    import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,10 +11,10 @@ import com.kmm.android.data.Car
 import com.kmm.android.databinding.CarRowBinding
 
 class CarAdapter(
-    private var cars: List<Car>,
     private val context: Context,
     private val listener: OnItemClickListener,
 ) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
+    private var cars: List<Car> = emptyList()
 
     interface OnItemClickListener {
         fun onItemClick(car: Car)
@@ -39,7 +38,6 @@ class CarAdapter(
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newCars: List<Car>) {
         cars = newCars
-        Log.d("TAG", "updateList: $cars\n$newCars")
         notifyDataSetChanged()
     }
 

@@ -61,7 +61,7 @@ class CarFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        caradapter = CarAdapter(emptyList(), requireContext(),object : CarAdapter.OnItemClickListener{
+        caradapter = CarAdapter(requireContext(),object : CarAdapter.OnItemClickListener{
             override fun onItemClick(car: Car) {
                 navController.navigate(CarFragmentDirections.actionNavCarToNavAddCar(car.id ?: 0L))
             }

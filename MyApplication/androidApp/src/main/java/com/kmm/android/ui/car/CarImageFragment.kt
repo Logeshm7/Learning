@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.kmm.android.R
 import com.kmm.android.data.network.KtorApiClient
 import com.kmm.android.data.network.KtorCarRepository
 import com.kmm.android.databinding.FragmentCarImageBinding
@@ -25,18 +27,21 @@ class CarImageFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentCarImageBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         ktorCarRepository = KtorCarRepository(ktorClient = KtorApiClient)
         viewModel = CarImageViewModel(
             getAllCarImageUseCase = GetAllCarImageUseCase(ktorCarRepository)
         )
         setupRecyclerView()
-        viewModel.getCarImage()
         initObserver()
-        return binding.root
+        viewModel.getCarImage()
     }
 
     private fun setupRecyclerView() {
-        caradapter = CarImageAdapter(emptyList(), requireContext())
+        caradapter = CarImageAdapter(requireContext())
         binding.rvCars.apply {
             adapter = caradapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -49,6 +54,12 @@ class CarImageFragment : Fragment() {
         }
         viewModel.car.observe(viewLifecycleOwner) {
             caradapter.updateList(it)
+        }
+        viewModel.message.observe(viewLifecycleOwner) {
+            CommonUtil.showCustomSuccessToast(it, requireContext())
+        }
+        viewModel.error.observe(viewLifecycleOwner) {
+            CommonUtil.showCustomErrorToast(it, requireContext())
         }
     }
 }
