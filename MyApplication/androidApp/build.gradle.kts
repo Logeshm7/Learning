@@ -60,5 +60,6 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.koin.android)
     debugImplementation(libs.compose.ui.tooling)
 }

@@ -6,6 +6,7 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:name=".KMMApplication"
         android:theme="@style/Theme.MyNavigationDrawer">
         <activity
             android:name=".NavigationActivity"

@@ -9,17 +9,14 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kmm.android.data.Car
-import com.kmm.android.data.network.KtorApiClient
-import com.kmm.android.data.network.KtorCarRepository
 import com.kmm.android.databinding.FragmentCarBinding
-import com.kmm.android.domain.GetCarsUseCase
 import com.kmm.android.presentation.CarViewModel
 import com.kmm.android.ui.car.adapter.CarAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CarFragment : Fragment() {
     private lateinit var binding: FragmentCarBinding
-    private lateinit var ktorCarRepository: KtorCarRepository
-    private lateinit var viewModel: CarViewModel
+    private val viewModel: CarViewModel by viewModel()
     private lateinit var caradapter: CarAdapter
     private lateinit var navController: NavController
 
@@ -35,10 +32,6 @@ class CarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
-        ktorCarRepository = KtorCarRepository(ktorClient = KtorApiClient)
-        viewModel = CarViewModel(
-            getCarsUseCase = GetCarsUseCase(ktorCarRepository)
-        )
         setupRecyclerView()
         initObserver()
         viewModel.getCar()
@@ -61,7 +54,7 @@ class CarFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        caradapter = CarAdapter(requireContext(),object : CarAdapter.OnItemClickListener{
+        caradapter = CarAdapter(requireContext(), object : CarAdapter.OnItemClickListener {
             override fun onItemClick(car: Car) {
                 navController.navigate(CarFragmentDirections.actionNavCarToNavAddCar(car.id ?: 0L))
             }

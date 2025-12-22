@@ -10,19 +10,13 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.kmm.android.R
 import com.kmm.android.data.Car
-import com.kmm.android.data.network.KtorApiClient
-import com.kmm.android.data.network.KtorCarRepository
 import com.kmm.android.databinding.FragmentAddCarBinding
-import com.kmm.android.domain.AddCarUseCase
-import com.kmm.android.domain.DeleteCarUseCase
-import com.kmm.android.domain.GetCarByIdUseCase
-import com.kmm.android.domain.UpdateCarUseCase
 import com.kmm.android.presentation.AddCarViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddCarFragment : Fragment() {
     private lateinit var binding: FragmentAddCarBinding
-    private lateinit var ktorCarRepository: KtorCarRepository
-    private lateinit var viewModel: AddCarViewModel
+    private val viewModel: AddCarViewModel by viewModel()
     private var carId: Long = 0
     private val args: AddCarFragmentArgs by navArgs()
 
@@ -32,13 +26,6 @@ class AddCarFragment : Fragment() {
     ): View {
         carId = args.carId
         binding = FragmentAddCarBinding.inflate(inflater)
-        ktorCarRepository = KtorCarRepository(ktorClient = KtorApiClient)
-        viewModel = AddCarViewModel(
-            addCar = AddCarUseCase(ktorCarRepository),
-            getCarByIdUseCase = GetCarByIdUseCase(ktorCarRepository),
-            _updateCar = UpdateCarUseCase(ktorCarRepository),
-            _deleteCar = DeleteCarUseCase(ktorCarRepository)
-        )
         initObserver()
         initListener()
         if (carId > 0) {

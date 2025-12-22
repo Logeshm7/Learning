@@ -6,20 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.kmm.android.R
-import com.kmm.android.data.network.KtorApiClient
-import com.kmm.android.data.network.KtorCarRepository
 import com.kmm.android.databinding.FragmentCarImageBinding
-import com.kmm.android.domain.GetAllCarImageUseCase
 import com.kmm.android.presentation.CarImageViewModel
 import com.kmm.android.ui.car.adapter.CarImageAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CarImageFragment : Fragment() {
 
     private lateinit var binding: FragmentCarImageBinding
-    private lateinit var ktorCarRepository: KtorCarRepository
-    private lateinit var viewModel: CarImageViewModel
+    private val viewModel: CarImageViewModel by viewModel()
     private lateinit var caradapter: CarImageAdapter
 
     override fun onCreateView(
@@ -31,10 +26,6 @@ class CarImageFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        ktorCarRepository = KtorCarRepository(ktorClient = KtorApiClient)
-        viewModel = CarImageViewModel(
-            getAllCarImageUseCase = GetAllCarImageUseCase(ktorCarRepository)
-        )
         setupRecyclerView()
         initObserver()
         viewModel.getCarImage()

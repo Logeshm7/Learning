@@ -12,7 +12,7 @@ import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
-class KtorCarRepository(private val ktorClient:KtorApiClient) : CarRepository {
+class KtorCarRepositoryImpl(private val ktorClient:KtorApiClient) : CarRepository {
     override suspend fun getCars(): ApiResponse<List<Car>> {
         return ktorClient.client.get(ktorClient.ENDPOINT).body()
     }
