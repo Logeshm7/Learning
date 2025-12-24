@@ -1,11 +1,11 @@
 package com.kmm.android.di
 
 import com.kmm.android.data.CarRepository
-import com.kmm.android.data.network.KtorCarRepositoryImpl
+import com.kmm.android.data.CarRepositoryImpl
 import org.koin.dsl.module
 
 val networkRepositoryModule = module{
     single<CarRepository> {
-        KtorCarRepositoryImpl(get())
+        CarRepositoryImpl(get(),get())
     }
 }

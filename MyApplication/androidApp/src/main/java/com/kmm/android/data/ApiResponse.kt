@@ -1,4 +1,4 @@
-package com.kmm.android.data.network
+package com.kmm.android.data
 
 import kotlinx.serialization.Serializable
 

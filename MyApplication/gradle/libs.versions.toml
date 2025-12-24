@@ -19,6 +19,7 @@ fragmentKtx = "1.8.9"
 ktorSerializationKotlinxJson = "3.2.0"
 ktorClientContentNegotiation = "3.2.0"
 koinCore = "3.5.6"
+sqlDelight = "2.1.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -43,6 +44,7 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktorClientContentNegotiation" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinCore" }
+android-sqldelight = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -52,3 +54,4 @@ navigation = { id = "androidx.navigation.safeargs.kotlin" , version.ref = "navig
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ktor-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
+sqldelight = { id= "app.cash.sqldelight", version.ref = "sqlDelight" }

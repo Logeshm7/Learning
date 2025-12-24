@@ -1,0 +1,28 @@
+CREATE TABLE CarEntity (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    brand TEXT NOT NULL,
+    model TEXT NOT NULL,
+    image TEXT,
+    price REAL NOT NULL
+);
+
+getAllCar:
+SELECT * FROM CarEntity;
+
+getCarById:
+SELECT * FROM CarEntity WHERE id = ?;
+
+insertCar:
+INSERT INTO CarEntity(brand, model, image, price)
+VALUES (?, ?, ?, ?);
+
+updateCar:
+UPDATE CarEntity
+SET brand = ?, model = ?, image = ?, price = ?
+WHERE id = ?;
+
+deleteCar:
+DELETE FROM CarEntity WHERE id = ?;
+
+getAllCarImage:
+SELECT image FROM CarEntity;

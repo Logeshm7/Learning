@@ -1,7 +1,5 @@
 package com.kmm.android.data
 
-import com.kmm.android.data.network.ApiResponse
-
 interface CarRepository {
     suspend fun getCars(): ApiResponse<List<Car>>
     suspend fun getCar(id: Long): ApiResponse<Car>

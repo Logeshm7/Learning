@@ -7,6 +7,6 @@ data class Car(
     val id: Long? = null,
     val brand: String,
     val model: String,
-    val image: String? = null,
+    var image: String? = null,
     val price: Double
 )

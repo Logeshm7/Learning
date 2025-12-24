@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.navigation)
     alias(libs.plugins.ktor.serialization)
-
+    alias(libs.plugins.sqldelight)
 }
 
 android {
@@ -39,6 +39,13 @@ android {
         jvmTarget = "1.8"
     }
 }
+sqldelight {
+    databases {
+        create("CarDatabase") {
+            packageName.set("db")
+        }
+    }
+}
 
 dependencies {
     implementation(projects.shared)
@@ -61,5 +68,6 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.koin.android)
+    implementation(libs.android.sqldelight)
     debugImplementation(libs.compose.ui.tooling)
 }
